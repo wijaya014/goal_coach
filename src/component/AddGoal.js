@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { goalRef } from "../firebase";
+import { firebaseApp } from "../firebase";
 class AddGoal extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +7,9 @@ class AddGoal extends Component {
   }
   handleClick() {
     console.log(this.state);
-    goalRef.push({ email: "agus@yahoo.com", title: this.state.title });
+    firebaseApp.db
+      .collection("goals")
+      .add({ email: "abc@abc.net", title: this.state.title });
   }
   render() {
     return (
