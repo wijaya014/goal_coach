@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import { Router, Route } from "react-router";
+
+import { createBrowserHistory } from "history";
+import App from "./component/App";
+import SignIn from "./component/SignIn";
+import SignUp from "./component/SignUp";
+import firebaseApp from "./firebase";
+
+const history = createBrowserHistory();
+
+// firebaseApp.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log("user has sign in as " + user);
+//   } else {
+//     console.log("user never sign up");
+//   }
+// });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router path={"/"} history={history}>
+    <Route path={"/app"} component={App} />
+    <Route path={"/signin"} component={SignIn} />
+    <Route path={"/signup"} component={SignUp} />
+  </Router>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
