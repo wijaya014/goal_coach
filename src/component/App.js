@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <div>
         <h3 className="mt-3">Goal</h3>
+        <h3>Goal coach</h3>
         <AddGoal />
         <GoalList />
         <div>
