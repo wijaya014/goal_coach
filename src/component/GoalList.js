@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { firebaseApp } from "../firebase";
 import { setGoal } from "../actions";
 import { connect } from "react-redux";
+import GoalItem from "./GoalItem";
 
 class GoalList extends Component {
   constructor(props) {
@@ -23,7 +24,13 @@ class GoalList extends Component {
 
   render() {
     console.log("this.props.goals adalah ", this.props.goals);
-    return <div>Goal list here</div>;
+    return (
+      <div>
+        {this.props.goals.map((goal, index) => {
+          return <GoalItem index={index} goals={goal} />;
+        })}
+      </div>
+    );
   }
 }
 function mapStateToProps(state) {
